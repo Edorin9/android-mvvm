@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/main_navigation"
+	app:startDestination="@id/splashFragment">
+
+	<fragment
+		android:id="@+id/splashFragment"
+		android:name="com.edorin.mvvmtemplate.view.splash.SplashFragment"
+		android:label="fragment_splash"
+		tools:layout="@layout/fragment_splash">
+		<action
+			android:id="@+id/splash_to_colors"
+			app:destination="@id/colorsFragment"
+			app:enterAnim="@anim/fade_enter"
+			app:exitAnim="@anim/fade_exit"
+			app:popEnterAnim="@anim/default_pop_enter"
+			app:popExitAnim="@anim/default_pop_exit"
+			app:popUpTo="@+id/splashFragment"
+			app:popUpToInclusive="true" />
+		<action
+			android:id="@+id/splash_to_login"
+			app:destination="@id/loginFragment"
+			app:enterAnim="@anim/fade_enter"
+			app:exitAnim="@anim/fade_exit"
+			app:popEnterAnim="@anim/default_pop_enter"
+			app:popExitAnim="@anim/default_pop_exit"
+			app:popUpTo="@+id/splashFragment"
+			app:popUpToInclusive="true" />
+	</fragment>
+
+	<fragment
+		android:id="@+id/colorsFragment"
+		android:name="com.edorin.mvvmtemplate.view.colors.ColorsFragment"
+		android:label="fragment_colors"
+		tools:layout="@layout/fragment_colors">
+		<action
+			android:id="@+id/colors_to_details"
+			app:destination="@id/detailsFragment"
+			app:enterAnim="@anim/default_enter"
+			app:exitAnim="@anim/default_exit"
+			app:popEnterAnim="@anim/default_pop_enter"
+			app:popExitAnim="@anim/default_pop_exit" />
+	</fragment>
+
+	<fragment
+		android:id="@+id/loginFragment"
+		android:name="com.edorin.mvvmtemplate.view.login.LoginFragment"
+		android:label="fragment_login"
+		tools:layout="@layout/fragment_login">
+		<action
+			android:id="@+id/login_to_register"
+			app:destination="@id/registerFragment"
+			app:enterAnim="@anim/default_enter"
+			app:exitAnim="@anim/default_exit"
+			app:popEnterAnim="@anim/default_pop_enter"
+			app:popExitAnim="@anim/default_pop_exit" />
+		<action
+			android:id="@+id/login_to_colors"
+			app:destination="@id/colorsFragment"
+			app:enterAnim="@anim/fade_enter"
+			app:exitAnim="@anim/fade_exit"
+			app:popEnterAnim="@anim/default_pop_enter"
+			app:popExitAnim="@anim/default_pop_exit"
+			app:popUpTo="@+id/loginFragment"
+			app:popUpToInclusive="true" />
+	</fragment>
+
+	<fragment
+		android:id="@+id/registerFragment"
+		android:name="com.edorin.mvvmtemplate.view.register.RegisterFragment"
+		android:label="fragment_register"
+		tools:layout="@layout/fragment_register" />
+
+	<fragment
+		android:id="@+id/detailsFragment"
+		android:name="com.edorin.mvvmtemplate.view.details.DetailsFragment"
+		android:label="fragment_details"
+		tools:layout="@layout/fragment_details">
+		<argument
+			android:name="id"
+			app:argType="integer" />
+	</fragment>
+
+</navigation>

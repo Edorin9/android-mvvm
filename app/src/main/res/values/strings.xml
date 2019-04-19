@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">MVVM Template</string>
+
+    <!-- Login Page -->
+    <string name="login_title">Login</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="login_login_button">LOGIN</string>
+    <string name="login_register_button">Register</string>
+
+    <!-- Register Page -->
+    <string name="register_title">Register</string>
+    <string name="register_email_hint">Email</string>
+    <string name="register_password_hint">Password</string>
+    <string name="register_register_button">REGISTER</string>
+
+    <!-- Colors Page -->
+    <string name="colors_title">Colors</string>
+
+</resources>

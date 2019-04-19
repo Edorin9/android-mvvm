@@ -1,0 +1,79 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.edorin.mvvmtemplate"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        config {
+            keyAlias 'MVVMTemplateAlias'
+            keyPassword 'EtalpmetMvvm'
+            storeFile rootProject.file('mvvmtemplate.jks')
+            storePassword 'EtalpmetMvvm'
+        }
+    }
+    buildTypes {
+        debug { debuggable true }
+        staging { initWith debug }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable false
+            signingConfig signingConfigs.config
+        }
+    }
+}
+
+dependencies {
+    // Modules
+    implementation project(":litunyi")
+    implementation project(":reqres")
+
+    // JARs
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // Android
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "androidx.core:core-ktx:$android_core_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+    implementation "android.arch.navigation:navigation-fragment-ktx:$arch_navigation_version"
+    implementation "android.arch.navigation:navigation-ui-ktx:$arch_navigation_version"
+
+    // Koin
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    testImplementation "org.koin:koin-test:$koin_version"
+    androidTestImplementation "org.koin:koin-test:$koin_version"
+
+    // Utilities
+    implementation "com.pawegio.kandroid:kandroid:$kandroid_version"
+
+    // Networking
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+
+    // Rx
+    implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
+
+    // Prefs
+    implementation "com.chibatching.kotpref:kotpref:$kotpref_version"
+    implementation "com.chibatching.kotpref:enum-support:$kotpref_version"
+    implementation "com.chibatching.kotpref:gson-support:$kotpref_version"
+
+    // Android Test
+    androidTestImplementation "androidx.test.ext:junit:$junit_version"
+    androidTestImplementation "androidx.test:runner:$test_runner_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+
+}

@@ -1,0 +1,82 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    signingConfigs {
+        config {
+            keyAlias 'colorsMvvmAlias'
+            keyPassword 'cMAPassword'
+            storeFile rootProject.file('colorsmvvm.jks')
+            storePassword 'cMAPassword'
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        staging {
+            initWith debug
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable false
+            signingConfig signingConfigs.config
+        }
+    }
+
+}
+
+dependencies {
+    // JARs
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    // Android
+    implementation "com.android.support.constraint:constraint-layout:$constraintlayout_version"
+    implementation "android.arch.navigation:navigation-ui-ktx:$arch_navigation_version"
+    implementation "com.google.android.material:material:$material_version"
+
+    // Utilities
+    implementation "com.pawegio.kandroid:kandroid:$kandroid_version"
+    implementation "org.jetbrains.anko:anko-commons:$anko_version"
+
+    // Permissions
+    implementation "com.github.fondesa:kpermissions:$kpermissions_version"
+
+    // Gson
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    // Networking
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_logging_version"
+
+    // Rx
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+
+    // Prefs
+    implementation "com.chibatching.kotpref:kotpref:$kotpref_version"
+    implementation "com.chibatching.kotpref:enum-support:$kotpref_version"
+    implementation "com.chibatching.kotpref:gson-support:$kotpref_version"
+
+    // Android Test
+    androidTestImplementation "androidx.test.ext:junit:$junit_version"
+    androidTestImplementation "androidx.test:runner:$test_runner_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+}

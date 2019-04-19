@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="status_blank">#182225</color>
+	<color name="status_default">#018EAA</color>
+	<color name="status_info">#4B60FF</color>
+	<color name="status_confirmation">#894BFD</color>
+	<color name="status_warning">#FFBC00</color>
+	<color name="status_error">#E62C4A</color>
+	<color name="status_success">#48DA57</color>
+</resources>
